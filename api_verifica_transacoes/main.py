@@ -1,25 +1,23 @@
-import json
-from funcoes import get_lista_de_transacoes_validadas
-from flask import Flask, request
-import requests
+"""
+Arquivo main cria endpoint com as rotas
+"""
+from fastapi import FastAPI
 import uvicorn
+from funcoes import get_lista_de_transacoes_validadas
+
 
 lista_de_transacoes_verificadas = get_lista_de_transacoes_validadas()
 
-app = Flask('Transacoes')
+app = FastAPI()
 
-@app.route("/transacoes_com_verificacoes", methods=["GET"])
+
+@app.get("/transacoes_com_verificacoes")
 async def root():
+    """
+    Endpoint das transacoes verificadas
+    """
     return lista_de_transacoes_verificadas
 
-def geraResponse(status, mensagem, nome_do_conteudo=False, conteudo=False):
-    response = {}
-    response["status"] = status
-    response["mensagem"] = mensagem
 
-    if(nome_do_conteudo and conteudo):
-        response[nome_do_conteudo] = conteudo
-    
-    return response
-
-app.run()
+if __name__ == '__main__':
+    uvicorn.run(app, port=5000, host='127.0.0.1')
