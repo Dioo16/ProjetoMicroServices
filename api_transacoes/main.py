@@ -16,7 +16,7 @@ async def root():
     return {"message": "Hello Pessoal"}
 
 
-@app.get("/produtos_vendidos")
+@app.get("/transacoes")
 async def get_produtos_vendidos():
     """
     endpoint get transacoes

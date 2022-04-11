@@ -1,7 +1,0 @@
-black
-fastapi
-pytest
-pylint
-numpy
-json
-uvicorn[standard]

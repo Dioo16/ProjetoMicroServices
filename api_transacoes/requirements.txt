@@ -1,6 +1,0 @@
-black
-fastapi
-pytest
-pylint
-json
-uvicorn[standard]
